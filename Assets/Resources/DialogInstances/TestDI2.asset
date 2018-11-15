@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0a45b961427e64e85d5c9017e8965d, type: 3}
+  m_Name: TestDI2
+  m_EditorClassIdentifier: 
+  Speaker: Bob
+  Content: Actually, go ahead and call me what ever. It doesn't actually matter to
+    me...
+  NextLine: {fileID: 0}
+  NextMenu: {fileID: 114167394100562790, guid: af245b400c555304ebb908570fcdfdd3, type: 2}
