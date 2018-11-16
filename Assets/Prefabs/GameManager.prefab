@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4209215924721228}
   m_Layer: 0
-  m_Name: RightViewPoint
+  m_Name: LeftViewPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4249665008215590}
   m_Layer: 0
-  m_Name: LeftViewPoint
+  m_Name: RightViewPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147613923355798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -21.720976, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4591781712440758}
@@ -250,7 +250,7 @@ Transform:
   m_LocalScale: {x: 2.25, y: 2.25, z: 2.5}
   m_Children: []
   m_Father: {fileID: 4591781712440758}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4249665008215590
 Transform:
@@ -259,11 +259,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716761354288068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.5, y: 0, z: 0}
+  m_LocalPosition: {x: 30.31, y: -0.91, z: 0}
   m_LocalScale: {x: 2.25, y: 2.25, z: 2.5}
   m_Children: []
   m_Father: {fileID: 4591781712440758}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4259446456886412
 Transform:
@@ -298,11 +298,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1951128834071474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1, y: -21.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.25, y: 2.25, z: 1}
   m_Children: []
   m_Father: {fileID: 4591781712440758}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4591781712440758
 Transform:
@@ -315,9 +315,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4022142438780654}
+  - {fileID: 4483348429153488}
   - {fileID: 4249665008215590}
   - {fileID: 4209215924721228}
-  - {fileID: 4483348429153488}
   m_Father: {fileID: 4155247357208292}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -401,10 +401,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TheCamera: {fileID: 0}
   FadeMask: {fileID: 0}
-  CameraLocationForLeft: {fileID: 4249665008215590}
-  CameraLocationForRight: {fileID: 4209215924721228}
+  CameraLocationForLeft: {fileID: 4209215924721228}
+  CameraLocationForRight: {fileID: 4249665008215590}
   CameraLocationForUp: {fileID: 4483348429153488}
   CameraLocationForForward: {fileID: 4022142438780654}
+  NoFade: 0
 --- !u!114 &114968700299332326
 MonoBehaviour:
   m_ObjectHideFlags: 1
