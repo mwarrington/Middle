@@ -35,7 +35,7 @@ public class MenuController : MonoBehaviour
 
         if (_theMenuManager.CurrentMenu.CurrentMenuOptionIndex < 0)
         {
-            _theMenuManager.CurrentMenu.CurrentMenuOptionIndex = _theMenuManager.CurrentMenu.MenuOptionCount - 1;
+            _theMenuManager.CurrentMenu.CurrentMenuOptionIndex = _theMenuManager.CurrentMenu.AllOptions.Count - 1;
         }
 
         _theMenuManager.CurrentMenu.Cursor.transform.position = new Vector3(_theMenuManager.CurrentMenu.Cursor.transform.position.x,
@@ -44,20 +44,19 @@ public class MenuController : MonoBehaviour
 
         _theMenuManager.CurrentMenu.CurrentMenuOption = _theMenuManager.CurrentMenu.AllOptions[_theMenuManager.CurrentMenu.CurrentMenuOptionIndex].gameObject;
     }
-
-    //an Invoke machine
-    public void MenuOptionSelect(List<KeyValuePair<MenuOptionType, Object>> menuEffects)
+    
+    public void MenuOptionSelect(MenuOption theMenuOption)//List<KeyValuePair<MenuOptionType, Object>> menuEffects)
     {
-        for (int i = 0; i < menuEffects.Count; i++)
+        for (int i = 0; i < theMenuOption.MyMenuEffects.Count; i++)
         {
-            switch(menuEffects[i].Key)
+            switch(theMenuOption.MyMenuEffects[i].Key)
             {
                 case MenuOptionType.LOADMENU:
-                    LoadNewMenu(menuEffects[i].Value as GameObject);
+                    LoadNewMenu((theMenuOption.MyMenuEffects[i].Value as GameObject).GetComponent<Menu>());
                     //Invoke("LoadNewMenu", );
                     break;
                 case MenuOptionType.LOADDIALOG:
-                    LoadDialog(menuEffects[i].Value as DialogInstance);
+                    LoadDialog(theMenuOption.MyMenuEffects[i].Value as DialogInstance);
                     _theMenuManager.CloseMenu();
                     _theGameManager.CurrentInputType = InputType.DIALOG;
                     //Invoke("LoadDialog", menuEffects[i].Value);
@@ -65,13 +64,16 @@ public class MenuController : MonoBehaviour
                 case MenuOptionType.LOADANIM:
                     //Invoke("CueAnimation", menuEffects[i].Value);
                     break;
+                case MenuOptionType.CHANGECAMERA:
+                    ChangeCamera(theMenuOption.LocationToMove);
+                    break;
             }
         }
     }
 
-    private void LoadNewMenu(GameObject menuToLoad)
+    private void LoadNewMenu(Menu menuToLoad)
     {
-        Instantiate(menuToLoad, _theMenuManager.CurrentMenu.CurrentMenuOption.transform.position, Quaternion.identity);
+        _theMenuManager.LoadMenu(menuToLoad, _theMenuManager.CurrentMenu.CurrentMenuOption.transform.position);
     }
 
     private void LoadDialog(DialogInstance dialogData)
@@ -83,5 +85,11 @@ public class MenuController : MonoBehaviour
     private void CueAnimation()
     {
 
+    }
+
+    private void ChangeCamera(CameraLocations cameraLocations)
+    {
+        _theGameManager.TheCameraManager.ChangeView(cameraLocations);
+        _theMenuManager.CloseAllMenus();
     }
 }

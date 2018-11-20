@@ -7,6 +7,7 @@ public class MenuOption : MonoBehaviour
     public GameObject MyObject;
     public List<MenuOptionType> MyMenuEffectsTypes = new List<MenuOptionType>();
     public List<Object> ThingToLoad = new List<Object>();
+    public CameraLocations LocationToMove;
 
     public List<KeyValuePair<MenuOptionType, Object>> MyMenuEffects = new List<KeyValuePair<MenuOptionType, Object>>();
 

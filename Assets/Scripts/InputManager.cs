@@ -32,7 +32,12 @@ public class InputManager : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.Return))
             {
-                _theMenuController.MenuOptionSelect(_theGameManager.TheMenuManager.CurrentMenu.CurrentMenuOption.GetComponent<MenuOption>().MyMenuEffects);
+                _theMenuController.MenuOptionSelect(_theGameManager.TheMenuManager.CurrentMenu.CurrentMenuOption.GetComponent<MenuOption>());
+            }
+
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                _theGameManager.TheMenuManager.CloseMenu();
             }
         }
         else if(_theGameManager.CurrentInputType == InputType.PLAYER)
@@ -49,6 +54,13 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 _theDialogManager.ToggleDialogBox(null);
+            }
+        }
+        else if(_theGameManager.CurrentInputType == InputType.NONE)
+        {
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+            {
+                _theGameManager.TheMenuManager.LoadMenu(_theGameManager.BaseMenu, _theGameManager.TheMenuManager.BaseInstantiationPosition.transform.position);
             }
         }
     }

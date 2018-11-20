@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    public List<GameObject> InstantiationPositions = new List<GameObject>();
+    public GameObject BaseInstantiationPosition;
     public MenuController TheMenuController;
     public Menu CurrentMenu;
 
@@ -15,14 +15,30 @@ public class MenuManager : MonoBehaviour
         _theGameManager = FindObjectOfType<GameManager>();
     }
 
-    public void LoadMenu(Menu newMenu, int instantiationPosition)
+    public void LoadMenu(Menu newMenu, Vector3 instantiationPosition)
     {
-        CurrentMenu = Instantiate(newMenu, InstantiationPositions[instantiationPosition].transform.position, Quaternion.identity); ;
+        CurrentMenu = Instantiate(newMenu, instantiationPosition, Quaternion.identity); ;
         _theGameManager.CurrentInputType = InputType.MENU;
+        CurrentMenu.transform.parent = Camera.main.transform;
     }
 
     public void CloseMenu()
     {
         GameObject.Destroy(CurrentMenu.gameObject);
+
+        if(FindObjectsOfType<Menu>() == null)
+        {
+            _theGameManager.CurrentInputType = InputType.NONE;
+        }
+    }
+
+    public void CloseAllMenus()
+    {
+        foreach (Menu menu in FindObjectsOfType<Menu>())
+        {
+            GameObject.Destroy(menu.gameObject);
+        }
+
+        _theGameManager.CurrentInputType = InputType.NONE;
     }
 }

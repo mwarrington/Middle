@@ -26,13 +26,16 @@ public enum MenuOptionType
 {
     LOADDIALOG,
     LOADMENU,
-    LOADANIM
+    LOADANIM,
+    CHANGECAMERA
 }
 
-public enum LookDirections
+public enum CameraLocations
 {
     UP,
     FORWARD,
     LEFT,
-    RIGHT
+    RIGHT,
+    DECK,
+    DREAM
 }

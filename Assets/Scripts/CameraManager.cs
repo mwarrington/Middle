@@ -30,43 +30,43 @@ public class CameraManager : MonoBehaviour
         }
 
         //temp
-        if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            ChangeView(LookDirections.UP);
-        }
+        //if(Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //    ChangeView(LookDirections.UP);
+        //}
 
-        if(Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            ChangeView(LookDirections.FORWARD);
-        }
+        //if(Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    ChangeView(LookDirections.FORWARD);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            ChangeView(LookDirections.LEFT);
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    ChangeView(LookDirections.LEFT);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            ChangeView(LookDirections.RIGHT);
-        }
+        //if (Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    ChangeView(LookDirections.RIGHT);
+        //}
     }
 
-    public void ChangeView(LookDirections directionToLook)
+    public void ChangeView(CameraLocations directionToLook)
     {
         if (NoFade)
         {
             switch (directionToLook)
             {
-                case LookDirections.UP:
+                case CameraLocations.UP:
                     MoveCamera(CameraLocationForUp.position);
                     break;
-                case LookDirections.FORWARD:
+                case CameraLocations.FORWARD:
                     MoveCamera(CameraLocationForForward.position);
                     break;
-                case LookDirections.LEFT:
+                case CameraLocations.LEFT:
                     MoveCamera(CameraLocationForLeft.position);
                     break;
-                case LookDirections.RIGHT:
+                case CameraLocations.RIGHT:
                     MoveCamera(CameraLocationForRight.position);
                     break;
                 default:
@@ -77,19 +77,19 @@ public class CameraManager : MonoBehaviour
         {
             switch (directionToLook)
             {
-                case LookDirections.UP:
+                case CameraLocations.UP:
                     _movePosition = CameraLocationForUp.position;
                     _fadingOut = true;
                     break;
-                case LookDirections.FORWARD:
+                case CameraLocations.FORWARD:
                     _movePosition = CameraLocationForForward.position;
                     _fadingOut = true;
                     break;
-                case LookDirections.LEFT:
+                case CameraLocations.LEFT:
                     _movePosition = CameraLocationForLeft.position;
                     _fadingOut = true;
                     break;
-                case LookDirections.RIGHT:
+                case CameraLocations.RIGHT:
                     _movePosition = CameraLocationForRight.position;
                     _fadingOut = true;
                     break;

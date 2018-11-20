@@ -11,4 +11,7 @@ public class GameManager : MonoBehaviour
 
     public InputType CurrentInputType;
     public KeyValuePair<string, bool> CurrentGoal = new KeyValuePair<string, bool>();
+    public Menu BaseMenu;
+
+    //Date and time fields
 }

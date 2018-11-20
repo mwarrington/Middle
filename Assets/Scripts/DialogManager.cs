@@ -37,7 +37,7 @@ public class DialogManager : MonoBehaviour
         {
             _menuNext = false;
             ToggleDialogBox(null);
-            _menuManager.LoadMenu(CurrentInstance.NextMenu, 0);
+            _menuManager.LoadMenu(CurrentInstance.NextMenu, Vector3.zero);
         }
         else if (CurrentInstance)
             ApplyDialogInstance();
