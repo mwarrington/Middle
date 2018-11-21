@@ -56,7 +56,7 @@ public class MenuController : MonoBehaviour
                     //Invoke("LoadNewMenu", );
                     break;
                 case MenuOptionType.LOADDIALOG:
-                    LoadDialog(theMenuOption.MyMenuEffects[i].Value as DialogInstance);
+                    LoadDialog();
                     _theMenuManager.CloseMenu();
                     _theGameManager.CurrentInputType = InputType.DIALOG;
                     //Invoke("LoadDialog", menuEffects[i].Value);
@@ -69,6 +69,8 @@ public class MenuController : MonoBehaviour
                     break;
             }
         }
+
+        _theGameManager.CheckProgress(theMenuOption.MenuAction);
     }
 
     private void LoadNewMenu(Menu menuToLoad)
@@ -76,10 +78,11 @@ public class MenuController : MonoBehaviour
         _theMenuManager.LoadMenu(menuToLoad, _theMenuManager.CurrentMenu.CurrentMenuOption.transform.position);
     }
 
-    private void LoadDialog(DialogInstance dialogData)
+    private void LoadDialog()
     {
         //Talk to dialog manager to get the dialog starting
-        _theGameManager.TheDialogManager.ToggleDialogBox(dialogData);
+        _theGameManager.TheDialogManager.FindCurrentDialog(_theGameManager.CurrentLocation, _theGameManager.PhaseIndex, _theGameManager.DialogSubject);
+        _theGameManager.TheDialogManager.ToggleDialogBox();
     }
 
     private void CueAnimation()

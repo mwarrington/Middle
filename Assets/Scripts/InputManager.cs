@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
             //Temp lines
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                _theDialogManager.ToggleDialogBox(null);
+                _theDialogManager.ToggleDialogBox();
             }
         }
         else if(_theGameManager.CurrentInputType == InputType.NONE)

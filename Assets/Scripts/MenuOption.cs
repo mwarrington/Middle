@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MenuOption : MonoBehaviour
 {
+    public string MenuAction;
     public GameObject MyObject;
     public List<MenuOptionType> MyMenuEffectsTypes = new List<MenuOptionType>();
     public List<Object> ThingToLoad = new List<Object>();

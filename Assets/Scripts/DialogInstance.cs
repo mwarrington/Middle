@@ -7,6 +7,8 @@ using UnityEditor;
 
 public class DialogInstance : ScriptableObject
 {
+    public bool HasBeenDisplayed,
+                Repeatable;
     public string Speaker,
                   Content;
     public DialogInstance NextLine;

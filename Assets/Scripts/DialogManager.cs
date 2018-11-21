@@ -19,14 +19,12 @@ public class DialogManager : MonoBehaviour
         _menuManager = FindObjectOfType<MenuManager>();
     }
 
-    public void ToggleDialogBox(DialogInstance dialogData)
+    public void ToggleDialogBox()
     {
         DialogBox.SetActive(!DialogBox.activeSelf);
 
         if (DialogBox.activeSelf)
         {
-            if (dialogData)
-                CurrentInstance = dialogData;
             ApplyDialogInstance();
         }
     }
@@ -36,13 +34,13 @@ public class DialogManager : MonoBehaviour
         if (_menuNext)
         {
             _menuNext = false;
-            ToggleDialogBox(null);
+            ToggleDialogBox();
             _menuManager.LoadMenu(CurrentInstance.NextMenu, Vector3.zero);
         }
         else if (CurrentInstance)
             ApplyDialogInstance();
         else
-            ToggleDialogBox(null);
+            ToggleDialogBox();
     }
 
     private void ApplyDialogInstance()
@@ -58,5 +56,40 @@ public class DialogManager : MonoBehaviour
         }
         else
             CurrentInstance = null;
+    }
+
+    public void FindCurrentDialog(CameraLocations location, int phase, string dialogSubject) //Date and time as other params possibly
+    {
+        string path = "Resources/DialogInstances/";
+
+        switch (location)
+        {
+            case CameraLocations.DECK:
+                path += "Deck/";
+                break;
+            case CameraLocations.DREAM:
+                path += "Dream/";
+                break;
+            case CameraLocations.UP:
+                path += "BelowDeckUp/";
+                break;
+            case CameraLocations.FORWARD:
+                path += "BelowDeckForward/";
+                break;
+            case CameraLocations.RIGHT:
+                path += "BelowDeckRight/";
+                break;
+            case CameraLocations.LEFT:
+                path += "BelowDeckLeft/";
+                break;
+            default:
+                break;
+        }
+
+        path += "Phase " + phase;
+
+        path += "/" + dialogSubject + "1";
+
+        CurrentInstance = (DialogInstance)Resources.Load(path);
     }
 }
