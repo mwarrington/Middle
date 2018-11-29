@@ -126,5 +126,7 @@ public class CameraManager : MonoBehaviour
     private void MoveCamera(Vector3 moveLocation)
     {
         TheCamera.transform.position = new Vector3(moveLocation.x, moveLocation.y, TheCamera.transform.position.z);
+
+        
     }
 }

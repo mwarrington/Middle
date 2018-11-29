@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public InputType CurrentInputType;
     public KeyValuePair<string, bool> CurrentGoal = new KeyValuePair<string, bool>();
+    public List<PhaseEvents> PhaseEvents = new List<PhaseEvents>();
     public Menu BaseMenu;
     public ProgressRequirement CurrentPR;
     public CameraLocations CurrentLocation;

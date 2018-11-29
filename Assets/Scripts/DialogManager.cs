@@ -11,11 +11,13 @@ public class DialogManager : MonoBehaviour
     public Text Speaker,
                 Content;
 
+    private GameManager _theGameManager;
     private MenuManager _menuManager;
     private bool _menuNext;
 
     private void Start()
     {
+        _theGameManager = FindObjectOfType<GameManager>();
         _menuManager = FindObjectOfType<MenuManager>();
     }
 
@@ -58,9 +60,10 @@ public class DialogManager : MonoBehaviour
             CurrentInstance = null;
     }
 
-    public void FindCurrentDialog(CameraLocations location, int phase, string dialogSubject) //Date and time as other params possibly
+    public void FindCurrentDialog(CameraLocations location, DialogLoadType loadType) //Date and time as other params possibly
     {
         string path = "Resources/DialogInstances/";
+        path += "Phase" + _theGameManager.PhaseIndex + 1;
 
         switch (location)
         {
@@ -86,10 +89,18 @@ public class DialogManager : MonoBehaviour
                 break;
         }
 
-        path += "Phase " + phase;
-
-        path += "/" + dialogSubject + "1";
+        path += loadType.ToString();
 
         CurrentInstance = (DialogInstance)Resources.Load(path);
+    }
+
+    public void TryLoadDialog(DialogLoadType loadType)
+    {
+        if (_theGameManager.PhaseEvents[_theGameManager.PhaseIndex - 1].ContainsLoadType(loadType))
+        {
+            FindCurrentDialog(_theGameManager.CurrentLocation, loadType);
+        }
+        else
+            return;
     }
 }
